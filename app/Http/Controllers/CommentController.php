@@ -11,18 +11,16 @@ class CommentController extends Controller
     function index(){
         // elequant orm -> get all data
        $data = Comment::all();
-       return view ('comment.index',['comments'=>$data,'pageTitle'=>'Blog'] );
+       return view ('comment.index',['comments'=>$data,'pageTitle'=>'Comments'] );
     }
 
 
 
     function create(){
-        Comment::create([
+        
+        Comment::factory(5)->create();
             
-            'author'=> 'hamza',
-            'content'=>'this is another comment',
-            'post_id'=> '2',
-        ]);
+        
         return redirect('/comments');
     }
 }

@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     function index(){
         // elequant orm -> get all data
-       $data = Post::all();
+       $data = Post::paginate(5);
        return view ('post.index',['posts'=>$data,'pageTitle'=>'Blog'] );
     }
 
@@ -20,12 +20,15 @@ class PostController extends Controller
     }
 
     function create(){
-        Post::create([
-            'title'=> 'my find unique content',
-            'body' => 'this is to test find',
-            'author'=> 'hamza',
-            'published'=> true,
-        ]);
+        // Post::create([
+        //     'title'=> 'my find unique content',
+        //     'body' => 'this is to test find',
+        //     'author'=> 'hamza',
+        //     'published'=> true,
+        // ]);
+        Post::factory(count: 1000)->create();
+
+
         return redirect('/blog');
     }
     function delete(){
