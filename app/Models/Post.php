@@ -19,10 +19,15 @@ class Post extends Model
         "author", 
         "body",
         "published",
+        "user_id"
 
     ];// field that can be updated
 
     protected $guarded = ["id"]; //cant be updated
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public function comments(){
         return $this->hasMany(Comment::class);

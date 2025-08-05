@@ -21,7 +21,7 @@ class BlogPostRequest extends FormRequest
         return [
             'title'=> "bail|required|unique:post,title,{$this->input('id')}",
             'body'=>'required',
-            'author'=>'required',
+            
         ];
     }
 
